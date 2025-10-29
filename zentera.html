@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zentera - Ivan Nekrasov</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #9d4edd;
+    }
+
+    header h1 {
+      color: #9d4edd;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #9d4edd;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10rem 3rem 4rem;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .project-header h1 {
+      font-size: 4rem;
+      color: #9d4edd;
+      margin-bottom: 1rem;
+    }
+
+    .project-header .subtitle {
+      font-size: 1.5rem;
+      color: #d0d0d0;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(157, 78, 221, 0.3);
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(157, 78, 221, 0.2);
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-item h3 {
+      color: #9d4edd;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-item p {
+      color: #d0d0d0;
+      font-size: 1.1rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section h2 {
+      color: #9d4edd;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #2dd4bf;
+      padding-left: 1rem;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+      margin-bottom: 1rem;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .section li {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .section li:before {
+      content: "▸";
+      color: #2dd4bf;
+      position: absolute;
+      left: 0;
+      font-size: 1.5rem;
+    }
+
+    .team-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .team-item {
+      background: rgba(45, 212, 191, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .team-item .number {
+      font-size: 2.5rem;
+      color: #2dd4bf;
+      font-weight: bold;
+    }
+
+    .team-item .role {
+      font-size: 1.1rem;
+      color: #d0d0d0;
+      margin-top: 0.5rem;
+    }
+
+    .awards {
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(157, 78, 221, 0.3);
+      margin-top: 1.5rem;
+    }
+
+    .awards h3 {
+      color: #2dd4bf;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .awards ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .awards li {
+      background: rgba(157, 78, 221, 0.2);
+      padding: 0.8rem 1.5rem;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+
+    .awards li:before {
+      content: "🏆";
+      margin-right: 0.5rem;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem;
+      background: rgba(157, 78, 221, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(157, 78, 221, 0.3);
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: #9d4edd;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .cta a:hover {
+      background: #2dd4bf;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(45, 212, 191, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .project-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .container {
+        padding: 8rem 1.5rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="profile">
+      <img src="profile.png" alt="Profile Photo">
+      <h1>Ivan Nekrasov</h1>
+    </div>
+    <nav>
+      <a href="portfolio.html">← Back to Portfolio</a>
+      <a href="portfolio.html#projects">Projects</a>
+      <a href="portfolio.html#about">About</a>
+      <a href="portfolio.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="project-header">
+      <h1>Zentera</h1>
+      <p class="subtitle">Producer & Tech Designer | 2025</p>
+      <img src="zentera.png" alt="Zentera Game Screenshot" class="hero-image">
+    </div>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <h3>Engine</h3>
+        <p>Kudzu Engine (Custom)</p>
+      </div>
+      <div class="meta-item">
+        <h3>Role</h3>
+        <p>Producer & Tech Designer</p>
+      </div>
+      <div class="meta-item">
+        <h3>Timeline</h3>
+        <p>8 Weeks</p>
+      </div>
+      <div class="meta-item">
+        <h3>Team Size</h3>
+        <p>16 People</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Game Description</h2>
+      <p>Zentera is a cozy voxel puzzle adventure where you play as Gori the lizard, using his stretchy tongue to solve environmental puzzles and collect trinkets to impress his partner. The game combines charming character-driven storytelling with clever puzzle mechanics in a beautifully crafted voxel world.</p>
+    </div>
+
+    <div class="section">
+      <h2>Team Composition</h2>
+      <p>Leading a multidisciplinary team of 16 talented individuals across three core disciplines:</p>
+      <div class="team-breakdown">
+        <div class="team-item">
+          <div class="number">3</div>
+          <div class="role">Designers</div>
+        </div>
+        <div class="team-item">
+          <div class="number">4</div>
+          <div class="role">Visual Artists</div>
+        </div>
+        <div class="team-item">
+          <div class="number">9</div>
+          <div class="role">Programmers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Achievements</h2>
+      <div class="awards">
+        <h3>Industry Day Awards</h3>
+        <ul>
+          <li>Best Tech</li>
+          <li>Best Design</li>
+          <li>Industry Award</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Key Learnings</h2>
+      <ul>
+        <li><strong>First Custom Engine Experience:</strong> This was my first time working in a team with a custom-made engine, presenting unique technical challenges and learning opportunities.</li>
+        <li><strong>Planning & Analysis:</strong> Learned the critical importance of thorough planning and analyzing requirements before implementation, especially when working with custom tools.</li>
+        <li><strong>Team Management:</strong> Gained invaluable experience managing a large multidisciplinary team, coordinating between designers, artists, and programmers to keep everyone aligned.</li>
+        <li><strong>Producer Skills:</strong> Developed project management abilities including sprint planning, task delegation, and maintaining team morale throughout the 8-week development cycle.</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <h2 style="color:#9d4edd; margin-bottom:1.5rem;">Play Zentera</h2>
+      <a href="https://buas.itch.io/zentera" target="_blank">Play on Itch.io</a>
+      <a href="portfolio.html">Back to Portfolio</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ivan Nekrasov – All Rights Reserved</p>
+  </footer>
+</body>
+</html>
