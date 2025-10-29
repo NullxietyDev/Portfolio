@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivan Nekrasov - Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0e0e0e;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00ffff;
+    }
+
+    header h1 {
+      color: #00ffff;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 8rem 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00ffff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #cfcfcf;
+    }
+
+    .project {
+      margin-bottom: 4rem;
+      border-left: 2px solid #00ffff;
+      padding-left: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project h3 {
+      color: #00ffff;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .project a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    .project img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project img:hover {
+      transform: scale(1.03);
+    }
+
+    .about, .contact {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="profile">
+      <img src="profile.png" alt="Profile Photo">
+      <h1>Ivan Nekrasov</h1>
+    </div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero">
+    <h2>Game Designer & Tech Artist</h2>
+    <p>Welcome to my portfolio. I create puzzle and adventure experiences across Roblox Studio and Unreal Engine.</p>
+  </section>
+
+  <section id="projects">
+    <h2 style="color:#00ffff; margin-bottom:2rem; text-align:center;">Projects</h2>
+
+    <div class="project">
+      <h3>Isolator (2019)</h3>
+      <p>Co-op Puzzle game with 65M+ visits and 25M+ social views. My first public project made solo in Roblox Studio.</p>
+      <img src="isolator.png" alt="Isolator Screenshot">
+      <p><a href="https://www.roblox.com/games/3514353228/Isolator" target="_blank">Play on Roblox</a></p>
+    </div>
+
+    <div class="project">
+      <h3>Nullxiety (2019)</h3>
+      <p>Competitive Puzzle Adventure — 31M+ visits, top monetized project. Built fully solo.</p>
+      <img src="nullxiety.png" alt="Nullxiety Screenshot">
+      <p><a href="https://www.roblox.com/games/3723475719/Nullxiety" target="_blank">Play on Roblox</a></p>
+    </div>
+
+    <div class="project">
+      <h3>Nullwork (2020)</h3>
+      <p>Story-focused puzzle adventure with VR-recorded cutscenes — 12M+ visits. Most technically advanced Roblox project.</p>
+      <img src="nullwork.png" alt="Nullwork Screenshot">
+      <p><a href="https://www.roblox.com/games/4486383608/Nullwork" target="_blank">Play on Roblox</a></p>
+    </div>
+
+    <div class="project">
+      <h3>Time Rewind Component (2024)</h3>
+      <p>Unreal Engine 5 blueprint system that rewinds physics, inspired by Forza Horizon 5.</p>
+      <img src="time_rewind.png" alt="Time Rewind Screenshot">
+      <p><a href="https://youtu.be/df9mHUjehbc?si=gcIEAaAMWQkPX_AP" target="_blank">Watch Demo</a></p>
+    </div>
+
+    <div class="project">
+      <h3>Zentera (2025)</h3>
+      <p>Voxel Puzzle adventure made in custom Kudzu Engine. Led a team of 16; winner of Best Tech, Design, and Industry awards.</p>
+      <img src="zentera.png" alt="Zentera Screenshot">
+      <p><a href="https://buas.itch.io/zentera" target="_blank">Play on Itch.io</a></p>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2 style="color:#00ffff; margin-bottom:1rem;">About Me</h2>
+    <p>I’m Ivan Nekrasov — a passionate game designer focused on puzzle, co-op and narrative-driven experiences. I specialize in gameplay systems and rapid prototyping, working across Roblox Studio and Unreal Engine 5.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 style="color:#00ffff; margin-bottom:1rem;">Contact</h2>
+    <p>Interested in collaboration or just want to say hi? Reach out at:</p>
+    <p><a href="mailto:ivan.nekrasov@example.com">ivan.nekrasov@example.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Ivan Nekrasov — All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const projects = document.querySelectorAll('.project');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    projects.forEach(p => observer.observe(p));
+  </script>
+</body>
+</html>
