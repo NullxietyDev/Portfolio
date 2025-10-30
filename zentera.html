@@ -87,12 +87,19 @@
       margin-bottom: 2rem;
     }
 
-    .hero-image {
+    .hero-video {
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto 3rem;
       border-radius: 15px;
+      overflow: hidden;
       box-shadow: 0 10px 40px rgba(157, 78, 221, 0.3);
+    }
+
+    .hero-video iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
     }
 
     .project-meta {
@@ -119,6 +126,22 @@
     .meta-item p {
       color: #d0d0d0;
       font-size: 1.1rem;
+    }
+
+    /* Role Highlight - Simple version */
+    .role-highlight {
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 2px solid rgba(157, 78, 221, 0.3);
+      margin-bottom: 4rem;
+    }
+
+    .role-highlight h2 {
+      color: #9d4edd;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
 
     .section {
@@ -267,19 +290,21 @@
       .container {
         padding: 8rem 1.5rem 2rem;
       }
+
+      .hero-video iframe {
+        height: 300px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-  	<nav>
-    <a href="index.html"><div class="profile">
-      <img src="profile.png" alt="Profile Photo">
+    <div class="profile">
+      <img src="profile.png" alt="Ivan Nekrasov">
       <h1>Ivan Nekrasov</h1>
-    </div></a>
-    </nav>
+    </div>
     <nav>
-      <a href="index.html">← Back to Portfolio</a>
+      <a href="index.html">Home</a>
       <a href="index.html#projects">Projects</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
@@ -290,17 +315,21 @@
     <div class="project-header">
       <h1>Zentera</h1>
       <p class="subtitle">Custom Engine University Project | 2025</p>
-      <iframe width="1120" height="630" src="https://www.youtube.com/embed/Z_Zsby4ZBBI?si=FTICQQfWBQ037s8i&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="hero-video">
+        <iframe src="https://www.youtube.com/embed/Z_Zsby4ZBBI?si=FTICQQfWBQ037s8i" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Simple role highlight box - write your own text here -->
+    <div class="role-highlight">
+      <h2>Producer & Technical Designer</h2>
+      <p>I managed and organized the entire team through SCRUM and meaningful communication with the team, all while also taking part in designing systems for the game.</p>
     </div>
 
     <div class="project-meta">
       <div class="meta-item">
         <h3>Engine</h3>
         <p>Kudzu Engine (Custom)</p>
-      </div>
-      <div class="meta-item">
-        <h3>Role</h3>
-        <p>Producer & Tech Designer</p>
       </div>
       <div class="meta-item">
         <h3>Timeline</h3>
@@ -315,6 +344,16 @@
     <div class="section">
       <h2>Game Description</h2>
       <p>Embark on an adventure with Gori, a clever lizard-like creature, in this voxel-based puzzle platformer. Use his versatile tongue to push, pull, swing, and solve intricate dioramic puzzles in charming miniature voxel worlds. Gori wants to impress his beloved partner by bringing beautiful little trinkets from each level.</p>
+    </div>
+
+    <!-- NEW SECTION - Add your specific work here -->
+    <div class="section">
+      <h2>My Responsibilities</h2>
+      <p>Due to a limited number of designers, I took both roles, which gave me a better insight into the workflow of the team members I was organizing.</p>
+      <ul>
+      	<li><strong>Production:</strong> Producer is my main role, so I managed the team full-time, organized meetings, set clear milestone schedules, pushed the team progress further. I also was the SCRUM master, onboarding everyone on its methologies and ensuring every member across all 3 disciplines worked together in unison.</li>
+      	<li><strong>Tech Design:</strong> I've designed the game's 3Cs together with our programmers and actively participated in requesting and curating engine features. The "Kudzu" custom engine was fine-tuned specifically for our team and our game, which gave me some great insights into the pipeline of a custom engine.</li>
+      </ul>
     </div>
 
     <div class="section">
@@ -366,7 +405,7 @@
   </div>
   
   <footer>
-		<p>© 2025 Ivan Nekrasov | Game Producer & Tech Designer</p>
-	</footer>
+    <p>© 2025 Ivan Nekrasov | Game Producer & Tech Designer</p>
+  </footer>
 </body>
 </html>

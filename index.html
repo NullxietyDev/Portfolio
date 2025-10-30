@@ -74,37 +74,61 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 8rem 3rem 4rem;
-      background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(45, 212, 191, 0.05) 100%);
+      padding: 8rem 0 4rem 0;
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.15) 0%, rgba(45, 212, 191, 0.08) 100%);
+      position: relative;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      padding: 0 3rem;
     }
 
     .hero h2 {
-      font-size: 4rem;
+      font-size: 5rem;
       margin-bottom: 1rem;
       color: #9d4edd;
-      line-height: 1.2;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -1px;
     }
 
     .hero .subtitle {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #2dd4bf;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
     }
 
-    .hero p {
-      font-size: 1.3rem;
+    .hero .hero-description {
+      font-size: 1.2rem;
       line-height: 1.8;
       color: #d0d0d0;
       margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-stats {
       display: flex;
-      gap: 3rem;
+      gap: 4rem;
       justify-content: center;
       margin-top: 3rem;
       flex-wrap: wrap;
@@ -115,7 +139,7 @@
     }
 
     .stat-number {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #2dd4bf;
       font-weight: bold;
     }
@@ -159,6 +183,13 @@
       margin-bottom: 2rem;
     }
 
+    /* Featured project takes full width and is centered */
+    .project-card-featured {
+      grid-column: 1 / -1;
+      max-width: 1000px;
+      margin: 0 auto 3rem auto;
+    }
+
     .project-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(157, 78, 221, 0.2);
@@ -178,6 +209,103 @@
       transform: translateY(-5px);
       border-color: #2dd4bf;
       box-shadow: 0 10px 40px rgba(157, 78, 221, 0.3);
+    }
+
+    /* Featured Project Card - Zentera */
+    .project-card-featured {
+      position: relative;
+      cursor: pointer;
+      border: 2px solid rgba(157, 78, 221, 0.6);
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.05) 0%, rgba(45, 212, 191, 0.05) 100%);
+    }
+
+    .project-card-featured::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #9d4edd, #2dd4bf, #9d4edd);
+      border-radius: 15px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background-size: 200% 200%;
+      animation: borderGlow 3s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .project-card-featured:hover::before {
+      opacity: 0.6;
+    }
+
+    .project-card-featured:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #9d4edd;
+      box-shadow: 0 15px 50px rgba(157, 78, 221, 0.5), 0 0 30px rgba(45, 212, 191, 0.3);
+    }
+
+    /* Featured project has taller image */
+    .project-card-featured .project-image {
+      height: 400px;
+    }
+
+
+    .click-hint {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(157, 78, 221, 0.9);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .project-card-featured:hover .click-hint {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .click-hint svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Make entire featured card clickable */
+    .project-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card-featured .project-links {
+      pointer-events: none;
+    }
+
+    .project-card-featured .project-link {
+      pointer-events: auto;
     }
 
     .project-image {
@@ -295,28 +423,130 @@
 
     /* About Section */
     .about-content {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+
+    /* About Hero Section with Photo */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      text-align: center;
+    }
+
+    .about-photo img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #9d4edd;
+      box-shadow: 0 10px 40px rgba(157, 78, 221, 0.4);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(45, 212, 191, 0.1);
+      padding: 0.7rem 1.2rem;
+      border-radius: 25px;
+      color: #2dd4bf;
+      font-size: 0.95rem;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .about-location svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .about-story {
+      text-align: left;
+    }
+
+    .about-quote {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: #9d4edd;
+      font-style: italic;
+      margin-bottom: 2rem;
+      padding: 1.5rem 2rem;
+      background: rgba(157, 78, 221, 0.05);
+      border-left: 4px solid #9d4edd;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .quote-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-intro {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #d0d0d0;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Skills Section */
+    .skills-section {
+      margin-top: 4rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .skills-header {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #9d4edd;
+      margin-bottom: 3rem;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .about-card {
       background: rgba(255, 255, 255, 0.03);
       padding: 2rem;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid rgba(157, 78, 221, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .about-card:hover {
+      border-color: #2dd4bf;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
 
     .about-card h3 {
       color: #2dd4bf;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
     .about-card ul {
@@ -326,9 +556,10 @@
     .about-card li {
       padding: 0.5rem 0;
       color: #d0d0d0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding-left: 1.5rem;
       position: relative;
+      line-height: 1.6;
     }
 
     .about-card li::before {
@@ -336,14 +567,13 @@
       color: #9d4edd;
       position: absolute;
       left: 0;
+      font-size: 1.1rem;
     }
 
-    .about-intro {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #d0d0d0;
+    /* Resume Section */
+    .resume-section {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-top: 4rem;
     }
 
     /* Contact Section */
@@ -469,6 +699,33 @@
         gap: 2rem;
       }
 
+      .about-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .about-photo img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .about-story {
+        text-align: center;
+      }
+
+      .about-intro {
+        text-align: left;
+      }
+
+      .about-quote {
+        font-size: 1.1rem;
+      }
+
+      .skills-header {
+        font-size: 2rem;
+      }
+
       section {
         padding: 4rem 1.5rem;
       }
@@ -495,9 +752,9 @@
 
   <section id="hero" class="hero">
     <div class="hero-content">
-      <h2>Game Producer & Tech Designer</h2>
-      <p class="subtitle">Puzzle • Multiplayer • Narrative-Driven Experiences</p>
-      <p>I specialize in managing multidisciplinary game development teams and designing systems in a variety of game engines. I am very adaptive in different coding environments.</p>
+      <h2>Ivan Nekrasov</h2>
+      <p class="subtitle">Game Producer &amp; Tech Designer</p>
+      <p class="hero-description">I specialize in managing multidisciplinary game development teams and designing systems in a variety of game engines. I am very adaptive in different coding environments.</p>
       
       <div class="hero-stats">
         <div class="stat-item">
@@ -524,28 +781,35 @@
 
     <div class="projects-grid">
       <!-- Zentera -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="zentera.png" alt="Zentera">
-          <div class="project-badge">⭐ Award Winner</div>
+      <a href="zentera.html" class="project-card-link">
+        <div class="project-card project-card-featured visible">
+          <div class="project-image">
+            <img src="zentera.png" alt="Zentera">
+            <div class="project-badge">⭐ Award Winner</div>
+            <div class="click-hint">
+              <span>Click to explore</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-header">
+              <h3>Zentera</h3>
+              <div class="project-year">2025</div>
+            </div>
+            <div class="project-stats">
+              <div class="project-stat">Producer & Tech Designer</div>
+              <div class="project-stat">16 Team Members</div>
+              <div class="project-stat">Custom Engine</div>
+            </div>
+            <p>Voxel puzzle adventure built in "Kudzu" custom engine. I've managed a multidisciplinary team and achieved Best Tech, Best Design and Industry Award at BUAS Industry Day Showcase.</p>
+            <div class="project-links">
+              <a href="https://buas.itch.io/zentera" target="_blank" class="project-link secondary" onclick="event.stopPropagation();">Play on Itch.io</a>
+            </div>
+          </div>
         </div>
-        <div class="project-content">
-          <div class="project-header">
-            <h3>Zentera</h3>
-            <div class="project-year">2025</div>
-          </div>
-          <div class="project-stats">
-            <div class="project-stat">Producer & Tech Designer</div>
-            <div class="project-stat">16 Team Members</div>
-            <div class="project-stat">Custom Engine</div>
-          </div>
-          <p>Voxel puzzle adventure built in "Kudzu" custom engine. I've managed a multidisciplinary team and achieved Best Tech, Best Design and Industry Award at BUAS Industry Day Showcase.</p>
-          <div class="project-links">
-            <a href="zentera.html" class="project-link">View Full Project</a>
-            <a href="https://buas.itch.io/zentera" target="_blank" class="project-link secondary">Play on Itch.io</a>
-          </div>
-        </div>
-      </div>
+      </a>
 
       <!-- Nullxiety -->
       <div class="project-card">
@@ -646,57 +910,90 @@
       <h2>About Me</h2>
     </div>
     <div class="about-content">
-      <p class="about-intro">
-        I'm Ivan Nekrasov – a passionate game producer & designer focused on multiplayer experiences. With over 100 million combined visits across my games, I've developed many skills in system design and team management. Currently in my 3rd year at Breda University of Applied Sciences (CMGT - Design & Production), I'm diving deeper into larger-scale production and development in custom engines.
-      </p>
       
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>Core Skills</h3>
-          <ul>
-            <li>Leadership & Team Management</li>
-            <li>Strategic Planning & Problem Solving</li>
-            <li>Game Design & Systems Thinking</li>
-            <li>Technical Design & Prototyping</li>
-            <li>Cross-Discipline Communication</li>
-            <li>Project Management (SCRUM/Kanban)</li>
-          </ul>
+      <!-- Personal Introduction with Photo -->
+      <div class="about-hero">
+        <div class="about-photo">
+          <img src="profile.png" alt="Ivan Nekrasov">
+          <div class="about-location">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span>From Russia 🇷🇺, <br> Based in Netherlands 🇳🇱</span>
+          </div>
         </div>
-        
-        <div class="about-card">
-          <h3>Technical Expertise</h3>
-          <ul>
-            <li>Roblox Studio & Luau</li>
-            <li>Unreal Engine 5 (Blueprints)</li>
-            <li>Custom Engine Development</li>
-            <li>Gameplay Systems & Mechanics</li>
-            <li>Rapid Prototyping</li>
-            <li>Production Pipelines</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="about-grid" style="margin-top: 2rem;">
-        <div class="about-card">
-          <h3>Languages</h3>
-          <ul>
-            <li>🇷🇺 Russian — Native</li>
-            <li>🇺🇸 English — C1 (Professional)</li>
-          </ul>
-        </div>
-        
-        <div class="about-card">
-          <h3>Education</h3>
-          <ul>
-            <li>Bachelor's Degree</li>
-            <li>Creative Media & Game Technologies</li>
-            <li>Design & Production Track</li>
-            <li>BUAS (2023 - 2027)</li>
-          </ul>
+        <div class="about-story">
+          <p class="about-quote">
+            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+            </svg>
+            Games are supposed to be fun by definition, and I am here to make it happen.
+          </p>
+          <p class="about-intro">
+            Born in Russia and now studying in the Netherlands, I've been creating games ever since I was 10 years old. What started as messing around in different game engines like a sandbox, became my whole life. Every day I learn new technical & team leading skills and adapt to new development engines, constantly expanding the scope of my projects. I have a very varied background, perfect for working in any environment.
+          </p>
+          <p class="about-intro">
+            Currently in my 3rd year at Breda University of Applied Sciences, I'm focusing on production and technical design skills, practicing coordinating bigger teams in a real project based work environment. So far, my stay here was a blast and I've proven my abilities with many various teams under many circumstences. There's always so much to learn, and I'm open for it as a proactive student.
+          </p>
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 3rem;">
+      <!-- Skills Grid -->
+      <div class="skills-section">
+        <h3 class="skills-header">What I Bring to the Table</h3>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="card-icon">🎯</div>
+            <h3>Production & Leadership</h3>
+            <ul>
+              <li>Large Team Management</li>
+              <li>SCRUM & Kanban Methodologies</li>
+              <li>Strategic Planning & Milestone Scheduling</li>
+              <li>Cross-Discipline Communication Organization</li>
+              <li>Risk Management & Problem Solving</li>
+            </ul>
+          </div>
+          
+          <div class="about-card">
+            <div class="card-icon">⚙️</div>
+            <h3>Technical Design</h3>
+            <ul>
+              <li>Roblox Studio & Luau Scripting</li>
+              <li>Unreal Engine 5 & Blueprints</li>
+              <li>Custom Engine Workflows</li>
+              <li>Gameplay Systems & Mechanics</li>
+              <li>Rapid Prototyping</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <div class="card-icon">🎮</div>
+            <h3>Design Philosophy</h3>
+            <ul>
+              <li>Player-Centered Design</li>
+              <li>Iterative Development</li>
+              <li>Co-op & Multiplayer Focus</li>
+              <li>Puzzle & Narrative Systems</li>
+              <li>Playtesting & User Research</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <div class="card-icon">🌍</div>
+            <h3>Background</h3>
+            <ul>
+              <li>🇷🇺 Russian (Native)</li>
+              <li>🇺🇸 English (C1 Professional)</li>
+              <li>🎓 BUas CMGT (2023-2027)</li>
+              <li>📍 Based in Breda, Netherlands</li>
+              <li>🎯 Design & Production Track</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resume Download -->
+      <div class="resume-section">
         <a href="Resume.pdf" download class="contact-link resume-button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
@@ -704,7 +1001,9 @@
           Download Full Resume
         </a>
       </div>
+
     </div>
+  </section>
   </section>
 
   <section id="contact">
